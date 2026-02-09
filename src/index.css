@@ -1,0 +1,60 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=MedievalSharp&family=Inter:wght@300;400;500;600&display=swap');
+
+:root {
+  --bourbon-dark: #1a0e08;
+  --bourbon-deep: #2c1810;
+  --bourbon-brown: #4a2c1a;
+  --bourbon-amber: #8b4513;
+  --gold: #d4a056;
+  --gold-bright: #f0c674;
+  --gold-glow: rgba(212, 160, 86, 0.6);
+  --cream: #f5e6d3;
+  --cream-soft: #e8d5b7;
+  --tan: #c9b896;
+  --wood: #8b7355;
+  --wizard-primary: #8A2BE2;
+  --wizard-dark: #4B0082;
+  --thief-primary: #556B2F;
+  --thief-dark: #2F4F4F;
+  --warrior-primary: #DC143C;
+  --warrior-dark: #8B0000;
+  --cleric-primary: #FFD700;
+  --cleric-dark: #DAA520;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Inter', 'Georgia', serif;
+  background: var(--bourbon-dark);
+  min-height: 100vh;
+  color: var(--cream);
+  overflow-x: hidden;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bourbon-dark);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--gold);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--gold-bright);
+}
+
+::selection {
+  background: var(--gold);
+  color: var(--bourbon-dark);
+}

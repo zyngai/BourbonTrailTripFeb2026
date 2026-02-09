@@ -1,0 +1,299 @@
+/* ===== BOSS FIGHT CONTAINER ===== */
+.bossfight-section {
+  background: rgba(0, 0, 0, 0.4);
+  border-radius: 20px;
+  padding: 30px;
+  margin-bottom: 40px;
+  border: 1px solid rgba(212, 160, 86, 0.3);
+  backdrop-filter: blur(10px);
+  position: relative;
+  overflow: hidden;
+}
+
+.bossfight-section::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+}
+
+.bossfight-title {
+  font-family: 'Cinzel', serif;
+  color: var(--gold);
+  font-size: 2rem;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 6px;
+  letter-spacing: 3px;
+}
+
+.bossfight-subtitle {
+  text-align: center;
+  color: var(--tan);
+  font-family: 'MedievalSharp', cursive;
+  font-size: 0.95rem;
+  margin-bottom: 24px;
+  letter-spacing: 2px;
+}
+
+/* ===== CHARACTER SELECT ===== */
+.char-select-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+  max-width: 600px;
+  margin: 0 auto 20px;
+}
+
+.char-select-btn {
+  background: linear-gradient(165deg, rgba(0,0,0,0.6), rgba(0,0,0,0.3));
+  border: 2px solid rgba(212, 160, 86, 0.3);
+  border-radius: 14px;
+  padding: 16px 10px;
+  text-align: center;
+  cursor: pointer;
+  transition: transform 0.3s, border-color 0.3s, box-shadow 0.3s;
+  color: var(--cream);
+}
+
+.char-select-btn:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 25px rgba(0,0,0,0.4);
+}
+
+.char-select-btn.wizard:hover { border-color: var(--wizard-primary); box-shadow: 0 8px 25px rgba(138,43,226,0.3); }
+.char-select-btn.thief:hover { border-color: var(--thief-primary); box-shadow: 0 8px 25px rgba(85,107,47,0.3); }
+.char-select-btn.warrior:hover { border-color: var(--warrior-primary); box-shadow: 0 8px 25px rgba(220,20,60,0.3); }
+.char-select-btn.cleric:hover { border-color: var(--cleric-primary); box-shadow: 0 8px 25px rgba(255,215,0,0.3); }
+
+.char-select-emoji {
+  font-size: 2rem;
+  display: block;
+  margin-bottom: 6px;
+}
+
+.char-select-name {
+  font-family: 'Cinzel', serif;
+  font-size: 0.95rem;
+  font-weight: 600;
+}
+
+.char-select-class {
+  font-size: 0.7rem;
+  color: var(--tan);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-top: 2px;
+}
+
+/* ===== GAME CANVAS CONTAINER ===== */
+.game-canvas-wrap {
+  position: relative;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 12px;
+}
+
+.game-canvas {
+  border-radius: 12px;
+  border: 2px solid rgba(212, 160, 86, 0.3);
+  cursor: pointer;
+  image-rendering: auto;
+  max-width: 100%;
+  touch-action: manipulation;
+}
+
+.game-canvas:active {
+  border-color: var(--gold);
+}
+
+/* ===== HP BARS ===== */
+.hp-bars {
+  display: flex;
+  gap: 16px;
+  align-items: stretch;
+  max-width: 700px;
+  margin: 0 auto 10px;
+}
+
+.hp-bar-wrap {
+  flex: 1;
+  background: rgba(0,0,0,0.5);
+  border-radius: 10px;
+  padding: 8px 12px;
+  border: 1px solid rgba(212, 160, 86, 0.15);
+}
+
+.hp-bar-label {
+  font-size: 0.75rem;
+  color: var(--tan);
+  margin-bottom: 4px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.hp-bar-label span:last-child {
+  font-family: 'Cinzel', serif;
+  color: var(--cream);
+  font-weight: 600;
+}
+
+.hp-bar-track {
+  height: 12px;
+  background: rgba(255,255,255,0.08);
+  border-radius: 6px;
+  overflow: hidden;
+  position: relative;
+}
+
+.hp-bar-fill {
+  height: 100%;
+  border-radius: 6px;
+  transition: width 0.3s ease;
+  position: relative;
+}
+
+.hp-bar-fill.player {
+  background: linear-gradient(90deg, #22c55e, #4ade80);
+}
+
+.hp-bar-fill.player.low {
+  background: linear-gradient(90deg, #ef4444, #f87171);
+}
+
+.hp-bar-fill.boss {
+  background: linear-gradient(90deg, #dc2626, #ef4444);
+}
+
+.hp-bar-fill.boss.enraged {
+  background: linear-gradient(90deg, #ff4400, #ff8800);
+  animation: boss-bar-pulse 0.5s ease-in-out infinite alternate;
+}
+
+@keyframes boss-bar-pulse {
+  from { filter: brightness(1); }
+  to { filter: brightness(1.3); }
+}
+
+/* ===== GAME HINT ===== */
+.game-hint {
+  text-align: center;
+  font-size: 0.8rem;
+  color: var(--wood);
+  font-style: italic;
+  margin-top: 4px;
+}
+
+/* ===== RESULT OVERLAY ===== */
+.game-result-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-radius: 12px;
+  z-index: 10;
+  animation: result-fade-in 0.5s ease;
+}
+
+@keyframes result-fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.game-result-overlay.victory {
+  background: rgba(0, 0, 0, 0.7);
+}
+
+.game-result-overlay.defeat {
+  background: rgba(40, 0, 0, 0.75);
+}
+
+.result-title {
+  font-family: 'Cinzel', serif;
+  font-size: 2.5rem;
+  font-weight: 900;
+  letter-spacing: 4px;
+  margin-bottom: 8px;
+}
+
+.result-title.victory {
+  color: #ffd700;
+  text-shadow: 0 0 30px rgba(255, 215, 0, 0.5);
+}
+
+.result-title.defeat {
+  color: #ff4444;
+  text-shadow: 0 0 30px rgba(255, 0, 0, 0.5);
+}
+
+.result-subtitle {
+  font-family: 'MedievalSharp', cursive;
+  color: var(--tan);
+  font-size: 1rem;
+  margin-bottom: 20px;
+}
+
+.result-btn {
+  background: linear-gradient(135deg, var(--bourbon-amber), var(--gold));
+  color: white;
+  border: none;
+  padding: 12px 28px;
+  border-radius: 10px;
+  font-family: 'Cinzel', serif;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+  letter-spacing: 1px;
+}
+
+.result-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(212, 160, 86, 0.4);
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+  .char-select-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+
+  .bossfight-title {
+    font-size: 1.5rem;
+  }
+
+  .hp-bars {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .result-title {
+    font-size: 1.8rem;
+  }
+}
+
+@media (max-width: 500px) {
+  .bossfight-section {
+    padding: 16px;
+  }
+
+  .char-select-btn {
+    padding: 12px 6px;
+  }
+
+  .char-select-emoji {
+    font-size: 1.6rem;
+  }
+
+  .char-select-name {
+    font-size: 0.8rem;
+  }
+}
